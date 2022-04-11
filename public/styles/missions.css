@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+div.titre {
+    background-color: #F5F5F5;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 0.5em;
+    text-align: center;
+}
+
+div.titre h1 {
+    font-family: 'Lato', sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    height: 180px;
+    color: #2F2F2F;
+    margin-top: 1rem;
+}
+
+div.missions {
+    display: flex;
+    border-radius: 5px;
+    width: 75%;
+    height: 90px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+div.missions p {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+}
+
+div.missions p.button {
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    width: 15%;
+    margin: 15px;
+    text-align: center;
+}
+
+div.missions p.button a {
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    margin: 5px;
+}
+
+div.missions p#valider {
+    background-color: #4979ff;
+}
+
+div.missions p#annuler {
+    background-color: #FA150A;
+}
+
+/* .single {
+    padding: 2px 16px;
+    background: #fff;
+    display: block;
+    margin: 20px 10px;
+    border-left: 8px solid #fff;
+} */

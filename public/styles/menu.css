@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display&family=Oswald&family=Roboto&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header.menu {
+    background-color: #3315B8;
+}
+
+header.menu nav {
+    height: 130px;
+}
+
+header.menu nav div.gauche {
+    float: left
+}
+
+header.menu  nav div.droite {
+    width: 80%;
+    margin-right: 70px;
+    float: right;
+}
+
+header.menu nav ul {
+    margin-top: 40px;
+    border: 2px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+header.menu nav div.droite ul li {
+    display: inline-block;
+    list-style-type: none;
+    transition: 0.3s ease-in-out;
+}
+
+header.menu nav div.gauche p {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 80px;
+    font-family: 'Oswald', sans-serif;
+}
+
+header.menu nav div.droite ul li a {
+    width: 100%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+header.menu nav div.droite ul li a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    color: #3315B8;
+    font-size: 55px;
+    text-align: center;
+}
+
+form {
+    display: block;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+form div.inputs div.input {
+    width: 33%;
+}
+
+form div.input {
+    margin-top: 50px;
+    display: inline-block;
+    width: 49%;
+}
+
+form div.input p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    color: #3315B8;
+    font-weight: bold;
+}
+
+form div.input input {
+    border: 2px solid #3315B8;
+    height: 40px;
+    text-align: center;
+    color: #3315B8;
+    border-radius: 5px;
+    font-size: 25px;
+    outline: none;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+form input.button {
+    width: 13%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #3315B8;
+    color: white;
+    font-size: "Roboto", sans-serif;
+    margin-top: 50px;
+    cursor: pointer;
+    font-size: 25px;
+    margin-left: 50%;
+    transform: translateX(-50%)
+}
+
+form input.button:active {
+    background-color: white;
+    color: #3315B8;
+}
+
+table {
+    margin: 0 auto;
+    font-size: 25px;
+    border-spacing: 0;
+}
+
+table tr.titre td {
+    font-weight: bold;
+    font-family: 'Roboto', serif;
+
+}
+
+table tr td {
+    height: 80px;
+    width: 11%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border-bottom: 3px solid #3315B8;
+
+}
+
+table tr td.faux {
+    border-right: 7px solid red;
+}
+
+table tr td.vrai {
+    border-right: 7px solid #3BE747;
+}
