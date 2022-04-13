@@ -7,14 +7,10 @@ export default async function(req, res) {
         modelsDistance.afficherDistance()
         .then(response => {
           if (response != "") {
-            let test;
-            for (let i = 0; i < 200; i++) {
-              test += "<item>"+response[i].nom_commune+"</item>\n"
-            }
-            console.log(test)
-            res.send(test)
+            res.json(response)
           }
         })
+        // Test
         .catch(error => {
           res.json(error); 
           res.status(405).end();
