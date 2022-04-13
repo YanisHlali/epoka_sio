@@ -36,7 +36,7 @@ agences.id_agence=salaries.idAgence AND `;
 
 async function getMissionValider(idResponsable) {
     return new Promise ((resolve,reject) => {
-        query(requete + `estValider_mission=0 AND idResponsable=${idResponsable} AND status_mission="En attente..."`, (err,result) => {
+        db.query(requete + `estValider_mission=0 AND idResponsable=${idResponsable} AND status_mission="En attente..."`, (err,result) => {
             if (err) throw err;
             resolve(result);
         });
@@ -45,7 +45,7 @@ async function getMissionValider(idResponsable) {
 
 async function getMissionPayer() {
     return new Promise((resolve,reject) => {
-        query(requete + `estValider_mission=1 AND estPayer_mission=0 AND status_mission="En cours..."` , (err,result) => {
+        db.query(requete + `estValider_mission=1 AND estPayer_mission=0 AND status_mission="En cours..."` , (err,result) => {
             if (err) throw err;
             resolve(result);
         });
@@ -53,19 +53,19 @@ async function getMissionPayer() {
 };
 
 async function validerMission(id_mission) {
-    query(`UPDATE missions SET estValider_mission=1,status_mission="En cours..." WHERE id_mission=${id_mission}`, (err,result) => {
+    db.query(`UPDATE missions SET estValider_mission=1,status_mission="En cours..." WHERE id_mission=${id_mission}`, (err,result) => {
         if (err) throw err;
     });
 };
 
 async function payerMission(id_mission)  {
-    query(`UPDATE missions SET estPayer_mission=1 WHERE id_mission=${id_mission}`, (err,result) => {
+    db.query(`UPDATE missions SET estPayer_mission=1 WHERE id_mission=${id_mission}`, (err,result) => {
         if (err) throw err;
     });
 };
 
 async function supprimerMission(id_mission) {
-    query(`DELETE FROM missions WHERE id_mission=${id_mission}`, (err,result) => {
+    db.query(`DELETE FROM missions WHERE id_mission=${id_mission}`, (err,result) => {
         if (err) throw err;
     });
 };
@@ -91,7 +91,7 @@ function recupererDateJour() {
 async function verifierMission() {
     let date = recupererDateJour()
     return new Promise((resolve,reject) => {
-        query(`SELECT id_mission,fin_mission FROM missions WHERE fin_mission < "${date}"`, (err,result) => {
+        db.query(`SELECT id_mission,fin_mission FROM missions WHERE fin_mission < "${date}"`, (err,result) => {
             if (err) throw err;
             resolve(result);
         });
@@ -99,7 +99,7 @@ async function verifierMission() {
 };
 
 async function finirMission(id_mission) {
-    query(`UPDATE missions SET status_mission="Terminé" WHERE id_mission=${id_mission}`, (err,result) => {
+    db.query(`UPDATE missions SET status_mission="Terminé" WHERE id_mission=${id_mission}`, (err,result) => {
         if (err) throw err;
     });
 };
@@ -107,7 +107,7 @@ async function finirMission(id_mission) {
 
 
 
-export default {
+module.exports =  {
     getMissionValider,
     getMissionPayer,
     validerMission,

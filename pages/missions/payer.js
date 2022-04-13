@@ -103,7 +103,7 @@ function Valider({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/missions/payer');
+  const res = await fetch('http://localhost:3001/api/missions/payer');
   const data = await res.json();
   if (data != "" || data != null || data.length != undefined) {
     return {

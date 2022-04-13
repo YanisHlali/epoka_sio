@@ -1,24 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display&family=Roboto&display=swap');
 * {
     margin: 0;
     padding: 0;
+    background-color: #A258FA;
 }
 
 div.main {
     position: relative;
-    top: 100px;
+    top: 60px;
     width: 25%;
     margin: 0 auto;
+    padding: 80px;
+    border-radius: 15px;
+    background-color: white;
+    
+}
+
+form {
+    background-color: white;
 }
 
 label {
     display: block;
-    font-family: 'Noto Serif Display', serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: blue;
     font-size: 25px;
     margin: 0 auto;
-    text-align: center;
+    background-color: white;
 }
 
 input {
@@ -27,23 +35,24 @@ input {
     width: 75%;
     outline: none;
     height: 40px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid grey;
+    border-radius: 10px;
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 20px;
     padding-left: 5%;
+    background-color: white;
 }
 
 button {
     display: block;
     margin: 0 auto;
-    width: 50%;
+    width: 75%;
+    height: 40px;
     background: white;
-    border: 1px solid blue;
-    background: blue;
-    font-family: 'Noto Serif Display', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    color: white;
     font-size: 23px;
+    border: none;
     border-radius: 5px;
+    background-color: #A258FA;
 }

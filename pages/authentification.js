@@ -1,5 +1,6 @@
 import { checkCookies, setCookies } from "cookies-next";
 import Head from "next/head";
+import Menu from "../components/menuAuthentification";
 
 function Formulaire() {
   const handleSubmit = async (event) => {
@@ -14,7 +15,7 @@ function Formulaire() {
     // Envoie les données au serveur au format JSON
     const JSONdata = JSON.stringify(data);
     // Lien API où l'on envoie les données
-    const endpoint = "http://localhost:3000/api/authentification";
+    const endpoint = "/api/authentification";
     // Crée la requête à envoyer au serveur
     const options = {
       method: "POST",
@@ -27,7 +28,7 @@ function Formulaire() {
     const response = await fetch(endpoint, options);
     // Résultat de l'API
     const result = await response.json();
-    console.log(response)
+    console.log(result)
     if (result) {
       // Si la réponse est différente de vide, on crée les cookies
       setCookies("userId", result[0].id_salarie);
@@ -45,22 +46,23 @@ function Formulaire() {
       <Head>
         <link rel="stylesheet" href="/styles/authentification.css" />
       </Head>
+      <Menu />
       <div className="main">
         <form
           onSubmit={handleSubmit}
           method="POST"
           className="authentification"
         >
-          <label>Nom</label>
           <input type="text" name="nom" placeholder="Nom" />
           <br />
           <br />
-          <label>Prenom</label>
+          <br />
           <input type="text" name="prenom" placeholder="Prénom" />
           <br />
           <br />
-          <label>Mot de passe</label>
+          <br />
           <input type="password" name="motdepasse" placeholder="*********" />
+          <br />
           <br />
           <br />
           <button className="second" type="submit">
