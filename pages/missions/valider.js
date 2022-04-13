@@ -76,8 +76,8 @@ function Valider({ data, url}) {
 }
 
 export const getStaticProps = async (context) => {
-  let host = context;
-  const res = await fetch(context+'/api/missions/valider');
+  let url = "https://new-epoka.vercel.app"
+  const res = await fetch(url+'/api/missions/valider');
   const data = await res.json();
 
   return {
