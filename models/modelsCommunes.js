@@ -18,6 +18,15 @@ async function getCommuneById(id) {
     });
 };
 
+async function getCommuneByName(commune) {
+    return new Promise((resolve,reject) => {
+        db.query(`SELECT * FROM communes WHERE nom_commune="${commune}"`, (err,result) => {
+            if (err) throw err;
+            resolve(result);
+        });
+    });
+}
+
 async function getCommuneMission(commune_1,commune_2) {
     let requete = `SELECT id_mission,c1.nom_commune as commune_arrive,c2.nom_commune as commune_depart
     FROM missions,communes c1,communes c2,salaries,agences
@@ -44,5 +53,6 @@ async function getCommuneMission(commune_1,commune_2) {
 module.exports = {
     getCommune,
     getCommuneById,
+    getCommuneByName,
     getCommuneMission
 }
