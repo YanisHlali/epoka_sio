@@ -75,13 +75,13 @@ function Valider({ data, url}) {
   )
 }
 
-export const getStaticProps = async (context) => {
-  const { req } = context;
-  const res = await fetch(req.headers.host+'/api/missions/valider');
+export const getStaticProps = async (req) => {
+  let host = req.get('host')
+  const res = await fetch(host+'/api/missions/valider');
   const data = await res.json();
 
   return {
-    props: { data: data, url: req.headers.host }
+    props: { data: data, url: host }
   }
 }
 
