@@ -16,10 +16,10 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
   return prix
 }
 
-async function validerMission(url,idMission) {
-  const res = await fetch(url+`/api/missions/${idMission}/valider`);
-  const data = await res.json();
-}
+// async function validerMission(url,idMission) {
+//   const res = await fetch(url+`/api/missions/${idMission}/valider`);
+//   const data = await res.json();
+// }
 
 function Valider({ data, url}) {
 
@@ -75,9 +75,17 @@ function Valider({ data, url}) {
   )
 }
 
-export const getStaticProps = async (req) => {
-  let host = req.get('host')
-  const res = await fetch(host+'/api/missions/valider');
+// export const getStaticProps = async (context) => {
+//   const res = await fetch(host+'/api/missions/valider');
+//   const data = await res.json();
+
+//   return {
+//     props: { data: data, url: host }
+//   }
+// }
+
+export const getStaticProps = async (context) => {
+  const res = await fetch("https://www.youtube.com/");
   const data = await res.json();
 
   return {
