@@ -17,7 +17,7 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
 }
 
 async function validerMission(idMission) {
-  const res = await fetch(`https://epoka.herokuapp.com/api/missions/${idMission}/valider`);
+  const res = await fetch(`https://new-epoka.vercel.app/api/missions/${idMission}/valider`);
   const data = await res.json();
 }
 
@@ -76,7 +76,7 @@ function Valider({ data}) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('https://epoka.herokuapp.com/api/missions/valider');
+  const res = await fetch('https://new-epoka.vercel.app/api/missions/valider');
   const data = await res.json();
 
 
