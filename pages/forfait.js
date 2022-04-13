@@ -17,7 +17,7 @@ function Forfait() {
             body: JSONdata,
           };
         
-        const res = await fetch('http://localhost:3000/api/forfait', options);
+        const res = await fetch(window.location.host+'/api/forfait', options);
         const response = await res.json();
     }
     return (

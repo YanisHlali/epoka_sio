@@ -17,7 +17,7 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
 }
 
 async function payerMission(idMission) {
-  const res = await fetch(`http://localhost:3000/api/missions/${idMission}/payer`);
+  const res = await fetch(window.location.host+`/api/missions/${idMission}/payer`);
   const data = await res.json();
 }
 
@@ -103,7 +103,7 @@ function Valider({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3001/api/missions/payer');
+  const res = await fetch(window.location.host+'/api/missions/payer');
   const data = await res.json();
   if (data != "" || data != null || data.length != undefined) {
     return {
