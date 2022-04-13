@@ -17,7 +17,7 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
 }
 
 async function validerMission(idMission) {
-  const res = await fetch(`http://localhost:3000/api/missions/${idMission}/valider`);
+  const res = await fetch(window.location.host+`/api/missions/${idMission}/valider`);
   const data = await res.json();
 }
 
@@ -76,7 +76,7 @@ function Valider({ data}) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3001/api/missions/valider');
+  const res = await fetch(window.location.host+'/api/missions/valider');
   const data = await res.json();
 
 
