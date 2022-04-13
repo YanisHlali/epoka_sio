@@ -75,13 +75,13 @@ function Valider({ data, url}) {
   )
 }
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   let url = "https://new-epoka.vercel.app"
   const res = await fetch(url+'/api/missions/valider');
   const data = await res.json();
 
   return {
-    props: { data: data, url: context }
+    props: { data: data, url: url }
   }
 }
 
