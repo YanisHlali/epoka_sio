@@ -36,10 +36,13 @@ agences.id_agence=salaries.idAgence AND `;
 
 
 async function creerMission(debut,fin,idJournaliste,commune) {
-    db.query(`INSERT INTO missions (debut_mission,fin_mission,status_mission,estValider_mission,estPayer_mission,
+    return new Promise((resolve,reject) => {
+        db.query(`INSERT INTO missions (debut_mission,fin_mission,status_mission,estValider_mission,estPayer_mission,
         idJournaliste_mission,idCommune_mission) VALUES (${debut},${fin},"En attente...",0,0,${idJournaliste},${commune})`, (err,result) => {
             if (err) throw err;
+            resolve(result);
         })
+    })
 }
 
 async function getMissionValider(idResponsable) {
@@ -116,6 +119,7 @@ async function finirMission(id_mission) {
 
 
 module.exports =  {
+    creerMission,
     getMissionValider,
     getMissionPayer,
     validerMission,
