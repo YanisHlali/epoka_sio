@@ -6,6 +6,15 @@ async function creerDistance(commune_une,commune_deux,distanceKm) {
     });
 };
 
+async function getDistance(commune_une,commune_deux) {
+    return new Promise((resolve,reject) => {
+        db.query(`SELECT * FROM distances WHERE communeUn_distance="${commune_une}" AND communeDeux_distance="${commune_deux}" OR communeUn_distance="${commune_deux}" AND communeDeux_distance="${commune_une} `, (err,result) => {
+            if (err) throw err;
+            resolve(result);
+        });
+    })
+}
+
 async function afficherDistance() {
     return new Promise((resolve,reject) => {
         db.query(`SELECT nom_commune FROM communes`, (err,result) => {
@@ -42,6 +51,7 @@ async function creerDistanceAuto() {
 
 module.exports = {
     creerDistance,
+    getDistance,
     afficherDistance,
     modifierDistance,
     creerDistanceAuto

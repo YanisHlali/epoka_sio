@@ -19,7 +19,7 @@ function Distance({ data }) {
             body: JSONdata,
           };
         
-        const res = await fetch(window.location.host+'/api/distances', options);
+        const res = await fetch('http://localhost:3001/api/distances', options);
         const response = await res.json();
     }
     return (
@@ -31,7 +31,7 @@ function Distance({ data }) {
 
     <h1>Distances</h1>
 
-    <form onSubmit={handleSubmit} method="POST">
+    <form onSubmit={handleSubmit}>
         <div class="input">
             <p>Commune n°1</p><br />
             <input list="communes" name="commune_1" />

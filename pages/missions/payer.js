@@ -16,12 +16,21 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
   return prix
 }
 
-async function payerMission(url,idMission) {
-  const res = await fetch(url+`/api/missions/${idMission}/payer`);
+async function payerMission(idMission) {
+  const res = await fetch(`https://new-epoka.vercel.app/api/missions/${idMission}/payer`);
   const data = await res.json();
+
+  console.log(data);
 }
 
-function Valider({ data }) {
+async function annulerMission(idMission) {
+  const res = await fetch(`http://localhost:3001/api/missions/${idMission}/annuler`);
+  const data = await res.json();
+
+  console.log(data);
+}
+
+function Payer({ data }) {
   if (data.length == undefined) {
     return (
       <>
@@ -60,19 +69,23 @@ function Valider({ data }) {
     }, this)
 
     let validation = data.map((e, index) => {
-      let id = e.id_mission
-      let lienValider = `/missions/${e.id_mission}/valider`
-      let lienAnnuler = `/missions/${e.id_mission}/annuler`
+      let id = e.id_mission;
       if (e.estPayer_mission == 0) {
         return (
           <>
-            <p key="valider" className="button" id="valider"><a key="v" id={e.id_mission} onClick={payerMission(id)}>Valider</a></p>
-            <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} href={lienAnnuler}>Annuler</a></p>
+            <p key="payer" className="button" id="valider"><a key="v" id={e.id_mission} onClick={() => {
+              payerMission(id)
+              window.location.href = "http://localhost:3001/missions/payer"
+            }}>Payer</a></p>
+            <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} onClick={() => {
+              annulerMission(id)
+              window.location.href="http://localhost:3001/missions/payer"
+            }}>Annuler</a></p>
           </>
         )
       } else {
         return (
-          <p>Validée</p>
+          <p>Payée</p>
         ) 
       }
     }, this)
@@ -103,8 +116,7 @@ function Valider({ data }) {
 }
 
 export const getStaticProps = async () => {
-    let url = "https://new-epoka.vercel.app"
-  const res = await fetch(url+'/api/missions/payer');
+  const res = await fetch('http://localhost:3001/api/missions/payer');
   const data = await res.json();
   if (data != "" || data != null || data.length != undefined) {
     return {
@@ -118,4 +130,4 @@ export const getStaticProps = async () => {
 }
 
 
-export default Valider;
+export default Payer;

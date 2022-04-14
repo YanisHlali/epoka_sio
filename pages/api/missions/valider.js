@@ -6,9 +6,8 @@ export default async function (req,res) {
   if (req.method === 'GET') {
     return new Promise((resolve,reject) => {
       let idResponsable = 1
-        modelsMissions.getMissionValider(idResponsable)
+        modelsMissions.getMission(idResponsable)
         .then(response => {
-          console.log(response)
           res.json(response)
         })
         .catch(error => {

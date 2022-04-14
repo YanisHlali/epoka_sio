@@ -53,6 +53,7 @@ div.missions p.button {
     width: 15%;
     margin: 15px;
     text-align: center;
+    cursor: pointer;
 }
 
 div.missions p.button a {

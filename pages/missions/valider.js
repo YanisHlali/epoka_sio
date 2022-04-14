@@ -1,5 +1,5 @@
 import Menu from "../../components/menu";
-import Head from "next/head";
+import Head from "next/head"
 
 function convertirDate(date) {
   let lesDates = date.split(/\//)
@@ -16,12 +16,21 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
   return prix
 }
 
-async function validerMission(url,idMission) {
-  const res = await fetch(url+`/api/missions/${idMission}/valider`);
+async function validerMission(idMission) {
+  const res = await fetch(`http://localhost:3001/api/missions/${idMission}/valider`);
   const data = await res.json();
+
+  console.log(data)
 }
 
-function Valider({ data, url}) {
+async function annulerMission(idMission) {
+  const res = await fetch(`http://localhost:3001/api/missions/${idMission}/annuler`);
+  const data = await res.json();
+
+  console.log(data);
+}
+
+function Valider({ data}) {
 
   let missions = data.map((e, index) => {
     return (
@@ -34,14 +43,18 @@ function Valider({ data, url}) {
   }, this)
 
   let validation = data.map((e, index) => {
-    let id = e.id_mission
-    let lienValider = `/missions/${e.id_mission}/valider`
-    let lienAnnuler = `/missions/${e.id_mission}/annuler`
+    let id = e.id_mission;
     if (e.estValider_mission == 0) {
       return (
         <>
-          <p key="valider" className="button" id="valider"><a key="v" id={e.id_mission} onClick={validerMission(url,id)}>Valider</a></p>
-          <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} href={lienAnnuler}>Annuler</a></p>
+          <p key="valider" className="button" id="valider"><a key="v" id={e.id_mission} onClick={() => {
+            validerMission(id)
+            window.location.href="http://localhost:3001/missions/valider"
+          }}>Valider</a></p>
+          <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} onClick={() => {
+            annulerMission(id)
+            window.location.href="http://localhost:3001/missions/valider"
+          }} >Annuler</a></p>
         </>
       )
     } else {
@@ -76,14 +89,14 @@ function Valider({ data, url}) {
 }
 
 export const getStaticProps = async () => {
-  let url = "https://new-epoka.vercel.app"
-  const res = await fetch(url+'/api/missions/valider');
+  const res = await fetch('http://localhost:3001/api/missions/valider');
   const data = await res.json();
 
+
   return {
-    props: { data: data, url: url }
+    props: { data: data }
   }
 }
 
 
-export default Valider;
+export default Valider; 

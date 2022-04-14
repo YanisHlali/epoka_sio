@@ -45,9 +45,18 @@ async function creerMission(debut,fin,idJournaliste,commune) {
     })
 }
 
+async function getMission(idResponsable) {
+    return new Promise((resolve,reject) => {
+        db.query(requete + `idResponsable=${idResponsable}`, (err,result) => {
+            if (err) throw err;
+            resolve(result);
+        });
+    });
+}
+
 async function getMissionValider(idResponsable) {
     return new Promise ((resolve,reject) => {
-        db.query(requete + `estValider_mission=0 AND idResponsable=${idResponsable} AND status_mission="En attente..."`, (err,result) => {
+        db.query(requete + `idResponsable=${idResponsable} AND status_mission="En attente..."`, (err,result) => {
             if (err) throw err;
             resolve(result);
         });
@@ -120,6 +129,7 @@ async function finirMission(id_mission) {
 
 module.exports =  {
     creerMission,
+    getMission,
     getMissionValider,
     getMissionPayer,
     validerMission,
