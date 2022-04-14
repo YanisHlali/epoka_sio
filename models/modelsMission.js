@@ -34,6 +34,14 @@ agences.idCommune_agence=c2.id_commune AND
 agences.id_agence=salaries.idAgence AND `;
 // `estValider_mission=1 AND status_mission="En cours..."`
 
+
+async function creerMission(debut,fin,idJournaliste,commune) {
+    db.query(`INSERT INTO missions (debut_mission,fin_mission,status_mission,estValider_mission,estPayer_mission,
+        idJournaliste_mission,idCommune_mission) VALUES (${debut},${fin},"En attente...",0,0,${idJournaliste},${commune})`, (err,result) => {
+            if (err) throw err;
+        })
+}
+
 async function getMissionValider(idResponsable) {
     return new Promise ((resolve,reject) => {
         db.query(requete + `estValider_mission=0 AND idResponsable=${idResponsable} AND status_mission="En attente..."`, (err,result) => {
