@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: #A258FA;
+    background-color: #3315B8;
 }
 
 div.main {
@@ -12,6 +12,7 @@ div.main {
     padding: 80px;
     border-radius: 15px;
     background-color: white;
+    box-shadow: 1px 1px 1px 1px black;
     
 }
 
@@ -48,11 +49,11 @@ button {
     margin: 0 auto;
     width: 75%;
     height: 40px;
-    background: white;
+    color: white;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 23px;
     border: none;
     border-radius: 5px;
-    background-color: #A258FA;
+    background-color: #3315B8;
 }

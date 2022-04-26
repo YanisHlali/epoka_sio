@@ -63,9 +63,9 @@ async function getMissionValider(idResponsable) {
     });
 };
 
-async function getMissionPayer() {
+async function getMissionPayer(idResponsable) {
     return new Promise((resolve,reject) => {
-        db.query(requete + `estValider_mission=1 AND estPayer_mission=0 AND status_mission="En cours..."` , (err,result) => {
+        db.query(requete + `estValider_mission=1 AND idResponsable=${idResponsable}` , (err,result) => {
             if (err) throw err;
             resolve(result);
         });
@@ -91,21 +91,15 @@ async function supprimerMission(id_mission) {
 };
 
 function recupererDateJour() {
-    let date = new Date();
-    let dateDuJour;
-    if (date.getDate() < 10) {
-        dateDuJour = "0" + date.getDate() + "/";
-    } else {
-        dateDuJour = date.getDate() + "/";
-    }
-    if ((date.getMonth()+1) < 10) {
-        dateDuJour += "0" + (date.getMonth()+1) + "/";
-    } else {
-        dateDuJour += (date.getMonth()+1) + "/";
-    }
-    dateDuJour += date.getFullYear();
-
-    return dateDuJour;
+    let aujourdhui = new Date();
+    // Récupération du jour
+    let jour = aujourdhui.getDate() < 10 ? "0" + aujourdhui.getDate() : aujourdhui.getDate();
+    // Récupération du mois
+    let mois = aujourdhui.getMonth() < 10 ? "0" + (aujourdhui.getMonth()+1) : aujourdhui.getMonth()+1;
+    // Récupération de l'année
+    let annee = aujourdhui.getFullYear();
+    let aujourDaujourdhui = jour + "/" + mois + "/" + annee;
+    return aujourDaujourdhui;
 }
 
 async function verifierMission() {

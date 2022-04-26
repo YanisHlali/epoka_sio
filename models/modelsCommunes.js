@@ -25,7 +25,7 @@ async function getCommuneByName(commune) {
             resolve(result);
         });
     });
-}
+};
 
 async function getCommuneMission(commune_1,commune_2) {
     let requete = `SELECT id_mission,c1.nom_commune as commune_arrive,c2.nom_commune as commune_depart
@@ -44,7 +44,7 @@ async function getCommuneMission(commune_1,commune_2) {
                 });
             } else {
                 resolve(result);
-            }
+            };
         });
     });
 };

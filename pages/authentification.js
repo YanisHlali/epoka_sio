@@ -1,4 +1,4 @@
-import { checkCookies, setCookies } from "cookies-next";
+import cookie from "js-cookie"
 import Head from "next/head";
 import Menu from "../components/menuAuthentification";
 
@@ -28,17 +28,16 @@ function Formulaire() {
     const response = await fetch(endpoint, options);
     // Résultat de l'API
     const result = await response.json();
-    console.log(result)
     if (result) {
       // Si la réponse est différente de vide, on crée les cookies
-      setCookies("userId", result[0].id_salarie);
-      setCookies("userNom", result[0].nom_salarie);
-      setCookies("userMdp", result[0].motdepasse_salarie);
-      if (result[0].estJournaliste_salarie == 1) setCookies("userRole", "journaliste");
-      if (result[0].estComptable_salarie == 1) setCookies("userRole", "comptable");
-      if (result[0].estResponsable_salarie == 1) setCookies("userRole", "responsable");
+      cookie.set("userId", result[0].id_salarie);
+      cookie.set("userNom", result[0].nom_salarie);
+      cookie.set("userMdp", result[0].motdepasse_salarie);
+      if (result[0].estJournaliste_salarie == 1) cookie.set("userRole", "journaliste");
+      if (result[0].estComptable_salarie == 1) cookie.set("userRole", "comptable");
+      if (result[0].estResponsable_salarie == 1) cookie.set("userRole", "responsable");
       // Redirige vers la page d'accueil
-      window.location.href = "/accueil";
+      window.location.href = "/missions/valider";
     }
   };
   return (

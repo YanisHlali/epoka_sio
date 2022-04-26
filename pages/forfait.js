@@ -26,7 +26,9 @@ function Forfait() {
             <link rel="stylesheet" href="/styles/forfait.css" />
         </Head>
         <Menu />
-        <h1>Paramètrage</h1>
+        <div className="titre">
+            <h1>Paramètrage</h1>
+        </div>
 
         <form onSubmit={handleSubmit} method="POST">
             <div class="input">

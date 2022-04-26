@@ -1,5 +1,7 @@
 import Menu from "../../components/menu";
 import Head from "next/head"
+import cookie from "js-cookie"
+import { useState, useEffect } from 'react'
 
 function convertirDate(date) {
   let lesDates = date.split(/\//)
@@ -30,7 +32,7 @@ async function annulerMission(idMission) {
   console.log(data);
 }
 
-function Valider({ data}) {
+function Valider({ data, role }) {
 
   let missions = data.map((e, index) => {
     return (
@@ -72,29 +74,48 @@ function Valider({ data}) {
         {missions[index]} {validation[index]}
       </div>
       </>
-    )}, this)
+    )}, this);
 
-  return (
-    <>
-    <Head>
-      <link rel="stylesheet" href="../../styles/missions.css" />
-    </Head>
-    <Menu />
-    <div className="titre">
-      <h1>Les missions à valider</h1>
-    </div>
-    {div}
-    </>
-  )
+  let h1 = <h1>Les missions à valider</h1>;
+  if (data == "") h1 = <h1>Aucune mission à valider</h1>
+
+
+
+  if (role == "responsable") {
+    return (
+      <>
+      <Head>
+        <link rel="stylesheet" href="../../styles/missions.css" />
+      </Head>
+      <Menu />
+      <div className="titre">
+        {h1}
+      </div>
+      {div}
+      </>
+    )
+  } else {
+    return (
+      <>
+        <Head>
+          <link rel="stylesheet" href="../../styles/missions.css" />
+          <link rel="stylesheet" href="../../styles/erreur.css" />
+        </Head>
+        <Menu />
+        <div className="droitRefuse">
+          <p>Vous n'avez pas les droits</p>
+        </div>
+      </>
+    )
+  }
 }
 
-export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3001/api/missions/valider');
-  const data = await res.json();
-
+export async function getServerSideProps({req,res}) {
+  const response = await fetch('http://localhost:3001/api/missions/valider');
+  const data = await response.json();
 
   return {
-    props: { data: data }
+    props: { data: data, role: req.cookies.userRole }
   }
 }
 

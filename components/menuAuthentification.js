@@ -8,7 +8,7 @@ export default function Menu() {
                 <link rel="stylesheet" href="/styles/menu.css" />
             </Head>
             <header className="menu">
-                <nav>
+                <nav className="authentification">
                     <div className="gauche">
                         <p>EPOKA</p>
                     </div>

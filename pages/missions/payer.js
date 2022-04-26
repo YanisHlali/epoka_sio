@@ -1,5 +1,6 @@
 import Menu from "../../components/menu";
 import Head from "next/head"
+import { getCookie } from "cookies-next";
 
 function convertirDate(date) {
   let lesDates = date.split(/\//)
@@ -98,7 +99,10 @@ function Payer({ data }) {
           {missions[index]} <p>{prix[index]}</p> {validation[index]} 
         </div>
         </>
-      )}, this)
+      )}, this);
+
+      let h1 = <h1>Les missions à payer</h1>;
+      if (data == "") h1 = <h1>Aucune mission à payer</h1>
 
     return (
       <>
@@ -107,7 +111,7 @@ function Payer({ data }) {
       </Head>
       <Menu />
       <div className="titre">
-        <h1>Les missions à payer</h1>
+        {h1}
       </div>
       {div}
       </>

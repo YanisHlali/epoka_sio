@@ -9,7 +9,7 @@ const modelsDistances = require('../../../models/modelsDistances');
 export default async function (req,res) {
     return new Promise((resolve,reject) => {
         let idResponsable = 1
-        modelsMissions.getMission(idResponsable)
+        modelsMissions.getMissionPayer(idResponsable)
         .then(response => {
           res.json(response)
           })
