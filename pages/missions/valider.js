@@ -19,14 +19,14 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
 }
 
 async function validerMission(idMission) {
-  const res = await fetch(`http://localhost:3001/api/missions/${idMission}/valider`);
+  const res = await fetch(`http://new-epoka.vercel.app/api/missions/${idMission}/valider`);
   const data = await res.json();
 
   console.log(data)
 }
 
 async function annulerMission(idMission) {
-  const res = await fetch(`http://localhost:3001/api/missions/${idMission}/annuler`);
+  const res = await fetch(`http://new-epoka.vercel.app/api/missions/${idMission}/annuler`);
   const data = await res.json();
 
   console.log(data);
@@ -51,11 +51,11 @@ function Valider({ data, role }) {
         <>
           <p key="valider" className="button" id="valider"><a key="v" id={e.id_mission} onClick={() => {
             validerMission(id)
-            window.location.href="http://localhost:3001/missions/valider"
+            window.location.href="http://new-epoka.vercel.app/missions/valider"
           }}>Valider</a></p>
           <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} onClick={() => {
             annulerMission(id)
-            window.location.href="http://localhost:3001/missions/valider"
+            window.location.href="http://new-epoka.vercel.app/missions/valider"
           }} >Annuler</a></p>
         </>
       )
@@ -111,7 +111,7 @@ function Valider({ data, role }) {
 }
 
 export async function getServerSideProps({req,res}) {
-  const response = await fetch('http://localhost:3001/api/missions/valider');
+  const response = await fetch('http://new-epoka.vercel.app/api/missions/valider');
   const data = await response.json();
 
   return {

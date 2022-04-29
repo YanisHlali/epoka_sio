@@ -25,7 +25,7 @@ async function payerMission(idMission) {
 }
 
 async function annulerMission(idMission) {
-  const res = await fetch(`http://localhost:3001/api/missions/${idMission}/annuler`);
+  const res = await fetch(`http://new-epoka.vercel.app/api/missions/${idMission}/annuler`);
   const data = await res.json();
 
   console.log(data);
@@ -76,11 +76,11 @@ function Payer({ data }) {
           <>
             <p key="payer" className="button" id="valider"><a key="v" id={e.id_mission} onClick={() => {
               payerMission(id)
-              window.location.href = "http://localhost:3001/missions/payer"
+              window.location.href = "http://new-epoka.vercel.app/missions/payer"
             }}>Payer</a></p>
             <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} onClick={() => {
               annulerMission(id)
-              window.location.href="http://localhost:3001/missions/payer"
+              window.location.href="http://new-epoka.vercel.app/missions/payer"
             }}>Annuler</a></p>
           </>
         )
@@ -120,7 +120,7 @@ function Payer({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3001/api/missions/payer');
+  const res = await fetch('http://new-epoka.vercel.app/api/missions/payer');
   const data = await res.json();
   if (data != "" || data != null || data.length != undefined) {
     return {
