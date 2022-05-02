@@ -76,11 +76,11 @@ function Payer({ data }) {
           <>
             <p key="payer" className="button" id="valider"><a key="v" id={e.id_mission} onClick={() => {
               payerMission(id)
-              window.location.href = "http://new-epoka.vercel.app/missions/payer"
+              window.location.href = "https://new-epoka.vercel.app/missions/payer"
             }}>Payer</a></p>
             <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} onClick={() => {
               annulerMission(id)
-              window.location.href="http://new-epoka.vercel.app/missions/payer"
+              window.location.href="https://new-epoka.vercel.app/missions/payer"
             }}>Annuler</a></p>
           </>
         )
