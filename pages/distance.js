@@ -19,7 +19,7 @@ function Distance({ data }) {
             body: JSONdata,
           };
         
-        const res = await fetch('http://new-epoka.vercel.app/api/distances', options);
+        const res = await fetch('https://new-epoka.vercel.app/api/distances', options);
         const response = await res.json();
     }
     return (
