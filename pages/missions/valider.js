@@ -19,7 +19,7 @@ function calculerPrixMission(dateDebut,dateFin,hebergement_forfait,distance_miss
 }
 
 async function validerMission(idMission) {
-  const res = await fetch(`http://new-epoka.vercel.app/api/missions/${idMission}/valider`);
+  const res = await fetch(`https://new-epoka.vercel.app/api/missions/${idMission}/valider`);
   const data = await res.json();
 
   console.log(data)
