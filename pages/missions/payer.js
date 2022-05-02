@@ -120,7 +120,7 @@ function Payer({ data }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://new-epoka.vercel.app/api/missions/payer');
+  const res = await fetch('https://new-epoka.vercel.app/api/missions/payer');
   const data = await res.json();
   if (data != "" || data != null || data.length != undefined) {
     return {
