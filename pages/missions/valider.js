@@ -51,11 +51,11 @@ function Valider({ data, role }) {
         <>
           <p key="valider" className="button" id="valider"><a key="v" id={e.id_mission} onClick={() => {
             validerMission(id)
-            window.location.href="http://new-epoka.vercel.app/missions/valider"
+            window.location.href="https://new-epoka.vercel.app/missions/valider"
           }}>Valider</a></p>
           <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} onClick={() => {
             annulerMission(id)
-            window.location.href="http://new-epoka.vercel.app/missions/valider"
+            window.location.href="https://new-epoka.vercel.app/missions/valider"
           }} >Annuler</a></p>
         </>
       )

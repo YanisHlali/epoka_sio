@@ -38,7 +38,6 @@ export default async function(req,res) {
         let idCommune = result[0].id_commune;
         modelsMissions.creerMission(debut,fin,idJournaliste,idCommune)
         .then((result) => {
-            console.log("ça marche");
             res.json(result)
             // modelsDistances.getDistance(communeDepart,commune)
             // .then((result2) => {

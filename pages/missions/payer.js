@@ -25,7 +25,7 @@ async function payerMission(idMission) {
 }
 
 async function annulerMission(idMission) {
-  const res = await fetch(`http://new-epoka.vercel.app/api/missions/${idMission}/annuler`);
+  const res = await fetch(`https://new-epoka.vercel.app/api/missions/${idMission}/annuler`);
   const data = await res.json();
 
   console.log(data);
