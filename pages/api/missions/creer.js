@@ -16,6 +16,7 @@ async function recupererCommuneJournaliste(idJournaliste) {
                 modelsCommunes.getCommuneById(result2[0].idCommune)
                 .then((result3) => {
                     console.log("Result3 : "+result3)
+                    console.log("ça marche")
                     resolve(result3[0].nom_commune);
                 })
             })
@@ -31,21 +32,20 @@ export default async function(req,res) {
     let fin = "16/04/2022";
     let idJournaliste = "3";
     let commune = "Grenoble";
-    let communeDepart = recupererCommuneJournaliste(idJournaliste)
-    console.log(communeDepart);
 
     modelsCommunes.getCommuneByName(commune)
     .then((result) => {
         let idCommune = result[0].id_commune;
         modelsMissions.creerMission(debut,fin,idJournaliste,idCommune)
         .then((result) => {
+            console.log("ça marche");
             res.json(result)
             // modelsDistances.getDistance(communeDepart,commune)
             // .then((result2) => {
             //     if (result2 != "") {
             //         modelsDistances.creerDistance(communeDepart,commune,result[0].distanceKm)
             //     }
-            // })
+            // })d
         })
         .catch(error => {
             res.json(error); 
