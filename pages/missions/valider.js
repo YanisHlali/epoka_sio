@@ -111,7 +111,7 @@ function Valider({ data, role }) {
 }
 
 export async function getServerSideProps({req,res}) {
-  const response = await fetch('http://new-epoka.vercel.app/api/missions/valider');
+  const response = await fetch('https://new-epoka.vercel.app/api/missions/valider');
   const data = await response.json();
 
   return {
