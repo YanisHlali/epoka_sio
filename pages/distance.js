@@ -29,7 +29,7 @@ function Distance({ data }) {
         <Menu />
 
         <div className="titre">
-            <h1>Paramètrage</h1>
+            <h1>Distance</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
