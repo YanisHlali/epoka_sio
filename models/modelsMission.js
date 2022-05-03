@@ -63,9 +63,9 @@ async function getMissionValider(idResponsable) {
     });
 };
 
-async function getMissionPayer(idResponsable) {
+async function getMissionPayer() {
     return new Promise((resolve,reject) => {
-        db.query(requete + `estValider_mission=1 AND idResponsable=${idResponsable}` , (err,result) => {
+        db.query(requete + `estValider_mission=1` , (err,result) => {
             if (err) throw err;
             resolve(result);
         });
