@@ -31,7 +31,7 @@ async function annulerMission(idMission) {
   console.log(data);
 }
 
-function Payer({ data }) {
+function Payer({ data, role }) {
   if (data.length == undefined) {
     return (
       <>
@@ -80,7 +80,7 @@ function Payer({ data }) {
             }}>Payer</a></p>
             <p key="annuler" className="button" id="annuler"><a key="a" id={e.id_mission} onClick={() => {
               annulerMission(id)
-              window.location.href="https://new-epoka.vercel.app/missions/annuler"
+              window.location.href="https://new-epoka.vercel.app/missions/payer"
             }}>Annuler</a></p>
           </>
         )
@@ -104,18 +104,35 @@ function Payer({ data }) {
       let h1 = <h1>Les missions à payer</h1>;
       if (data == "") h1 = <h1>Aucune mission à payer</h1>
 
-    return (
-      <>
-      <Head>
-        <link rel="stylesheet" href="../styles/missions.css" />
-      </Head>
-      <Menu />
-      <div className="titre">
-        {h1}
-      </div>
-      {div}
-      </>
-    )
+      if (role == "comptable") {
+        return (
+          <>
+          <Head>
+            <link rel="stylesheet" href="../../styles/missions.css" />
+          </Head>
+          <Menu />
+          <div className="titre">
+            {h1}
+          </div>
+          {div}
+          </>
+        )
+      } else {
+        return (
+          <>
+            <Head>
+              <link rel="stylesheet" href="../../styles/missions.css" />
+              <link rel="stylesheet" href="../../styles/erreur.css" />
+            </Head>
+            <Menu />
+            <div className="droitRefuse">
+              <p>Vous n'avez pas les droits</p>
+            </div>
+          </>
+        )
+      }
+
+
   }
 }
 
@@ -124,7 +141,7 @@ export async function getServerSideProps({req,res}) {
   const data = await response.json();
   if (data != "" || data != null || data.length != undefined) {
     return {
-      props: { data: data }
+      props: { data: data, role: req.cookies.userRole }
     }
   } else {
     return {
