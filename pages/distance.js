@@ -28,39 +28,41 @@ function Distance({ data }) {
         </Head>
         <Menu />
 
-    <h1>Distances</h1>
+        <div className="titre">
+            <h1>Paramètrage</h1>
+        </div>
 
-    <form onSubmit={handleSubmit}>
-        <div class="input">
-            <p>Commune n°1</p><br />
-            <input list="communes" name="commune_1" />
-            <datalist id="communes">
+        <form onSubmit={handleSubmit}>
+            <div class="input">
+                <p>Commune n°1</p><br />
+                <input list="communes" name="commune_1" />
+                <datalist id="communes">
+                    {data.map((e, index) => {
+                        return (
+                            <option id="commune_1" value={e.nom_commune}></option>
+                        )
+                    })}
+                </datalist>
+            </div>
+            <div class="input">
+                <p>Commune n°2</p><br />
+                <input list="communes" name="commune_2" />
+                <datalist id="communes">
                 {data.map((e, index) => {
-                    return (
-                        <option id="commune_1" value={e.nom_commune}></option>
-                    )
-                })}
-            </datalist>
-        </div>
-        <div class="input">
-            <p>Commune n°2</p><br />
-            <input list="communes" name="commune_2" />
-            <datalist id="communes">
-            {data.map((e, index) => {
-                    return (
-                        <option id="commune_2" value={e.nom_commune}></option>
-                    )
-                })}
-            </datalist>
-        </div>
-        <div class="input">
-            <p>Distance en km</p><br />
-            <input type="number" name="distance" id="distance" /><br />
-        </div>
+                        return (
+                            <option id="commune_2" value={e.nom_commune}></option>
+                        )
+                    })}
+                </datalist>
+            </div>
+            <div class="input">
+                <p>Distance en km</p><br />
+                <input type="number" name="distance" id="distance" /><br />
+            </div>
 
-        <input class="button" type="submit" value="Envoyer" />
-    </form>
-    </>
+            <input class="button" type="submit" value="Envoyer" />
+        </form>
+        </>
     )
 }
 
