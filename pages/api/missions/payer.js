@@ -1,10 +1,6 @@
 import { getCookies } from 'cookies-next';
 
 const modelsMissions = require('../../../models/modelsMission');
-const modelsSalaries = require('../../../models/modelsSalaries');
-const modelsAgences = require('../../../models/modelsSalaries');
-const modelsCommunes = require('../../../models/modelsCommunes');
-const modelsDistances = require('../../../models/modelsDistances');
 
 export default async function (req,res) {
     return new Promise((resolve,reject) => {
@@ -15,8 +11,7 @@ export default async function (req,res) {
       .catch(error => {
         console.error(error);
       })
-        let idResponsable = 1
-        modelsMissions.getMissionPayer(idResponsable)
+        modelsMissions.getMissionPayer()
         .then(response => {
           res.json(response)
           })

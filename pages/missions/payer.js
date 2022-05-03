@@ -137,7 +137,7 @@ function Payer({ data, role }) {
 }
 
 export async function getServerSideProps({req,res}) {
-  const response = await fetch(`https://new-epoka.vercel.app/api/missions/responsable/${req.cookies.userId}/payer`);
+  const response = await fetch(`https://new-epoka.vercel.app/api/missions/payer`);
   const data = await response.json();
   if (data != "" || data != null || data.length != undefined) {
     return {
