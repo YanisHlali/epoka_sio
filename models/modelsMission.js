@@ -37,8 +37,6 @@ agences.id_agence=salaries.idAgence AND `;
 
 async function creerMission(debut,fin,idJournaliste,commune) {
     return new Promise((resolve,reject) => {
-        console.log(`INSERT INTO missions (debut_mission,fin_mission,status_mission,estValider_mission,estPayer_mission,
-            idJournaliste_mission,idCommune_mission) VALUES ("${debut}","${fin}","En attente...",0,0,${idJournaliste},${commune})`)
         db.query(`INSERT INTO missions (debut_mission,fin_mission,status_mission,estValider_mission,estPayer_mission,
         idJournaliste_mission,idCommune_mission) VALUES ("${debut}","${fin}","En attente...",0,0,${idJournaliste},${commune})`, (err,result) => {
             if (err) throw err;
@@ -121,6 +119,28 @@ async function finirMission(id_mission) {
 };
 
 
+async function modifierMissionDistanceAuto() {
+    return new Promise((resolve,reject) => {
+        db.query(`
+        SELECT *
+        FROM distances,missions,salaries,agences
+        WHERE idJournaliste_mission = id_salarie AND 
+        idAgence = id_agence AND 
+        communeUn_distance = idCommune_mission AND communeDeux_distance = idCommune_agence OR 
+        idJournaliste_mission = id_salarie AND 
+        idAgence = id_agence AND 
+        communeDeux_distance = idCommune_mission AND communeUn_distance = idCommune_agence
+        `,(err,result) => {
+            if (err) throw err;
+            db.query(`UPDATE missions SET distance_mission=${result[0].distanceKm} WHERE id_mission=${result[0].id_mission}`, (err,result1) => {
+                if (err) throw err;
+                resolve(result1)
+            });
+        });
+    });
+};
+
+
 
 
 module.exports =  {
@@ -132,5 +152,6 @@ module.exports =  {
     payerMission,
     supprimerMission,
     verifierMission,
-    finirMission
+    finirMission,
+    modifierMissionDistanceAuto
 }

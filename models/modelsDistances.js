@@ -41,10 +41,10 @@ async function creerDistanceAuto() {
         communeDeux_distance="${result[0].commune_depart}" OR communeUn_distance="${result[0].commune_depart}" AND
         communeDeux_distance="${result[0].commune_arrivee}"`, (err,result2) => {
             console.log(result2)
-            // creerDistance(result[0].commune_arrivee,result[0].commune_depart,result2[0].distanceKm);
-            // db.query(`UPDATE missions SET distance_mission=${result2[0].distanceKm} WHERE id_mission=${result[0].id_mission}`, (err,result) => {
-            //     if (err) throw err;
-            // })
+            creerDistance(result[0].commune_arrivee,result[0].commune_depart,result2[0].distanceKm);
+            db.query(`UPDATE missions SET distance_mission=${result2[0].distanceKm} WHERE id_mission=${result[0].id_mission}`, (err,result) => {
+                if (err) throw err;
+            })
         })
     });
 }
