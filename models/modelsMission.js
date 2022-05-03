@@ -132,10 +132,12 @@ async function modifierMissionDistanceAuto() {
         communeDeux_distance = idCommune_mission AND communeUn_distance = idCommune_agence
         `,(err,result) => {
             if (err) throw err;
-            db.query(`UPDATE missions SET distance_mission=${result[0].distanceKm} WHERE id_mission=${result[0].id_mission}`, (err,result1) => {
-                if (err) throw err;
-                resolve(result1)
-            });
+            if (result != "") {
+                db.query(`UPDATE missions SET distance_mission=${result[0].distanceKm} WHERE id_mission=${result[0].id_mission}`, (err,result1) => {
+                    if (err) throw err;
+                    resolve(result1)
+                });
+            }
         });
     });
 };
