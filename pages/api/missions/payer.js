@@ -8,6 +8,13 @@ const modelsDistances = require('../../../models/modelsDistances');
 
 export default async function (req,res) {
     return new Promise((resolve,reject) => {
+      modelsMissions.modifierMissionDistanceAuto()
+      .then(result => {
+        console.log(result)
+      })
+      .catch(error => {
+        console.error(error);
+      })
         let idResponsable = 1
         modelsMissions.getMissionPayer(idResponsable)
         .then(response => {
