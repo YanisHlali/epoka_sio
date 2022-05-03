@@ -27,11 +27,7 @@ async function recupererCommuneJournaliste(idJournaliste) {
 
 export default async function(req,res) {
     return new Promise((resolve,reject) => {
-    // const { debut, fin, idJournaliste, commune } = req.body
-    let debut = "16/04/2022";
-    let fin = "16/04/2022";
-    let idJournaliste = "3";
-    let commune = "Grenoble";
+    let { debut, fin, idJournaliste, commune } = req.body
 
     modelsCommunes.getCommuneByName(commune)
     .then((result) => {
